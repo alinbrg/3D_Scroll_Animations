@@ -13,13 +13,14 @@ export default function Model() {
   const scroll = useScroll();
 
   useEffect(() => {
-    actions["Experiment"].play().paused = true;
+    const action =  actions["Experiment"];
+    if(action) action.play().paused = true;
   }, []);
 
-  useFrame(() =>
-    (actions["Experiment"].time =
-      (actions["Experiment"].getClip().duration * scroll.offset) )
-  )
+  useFrame(() => {
+    const action = actions["Experiment"]
+    if (action) (action.time = (action.getClip().duration * scroll.offset))
+  })
 
 
   return <group ref={group} position={[0, -1, 0]} >

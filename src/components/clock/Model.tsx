@@ -15,13 +15,15 @@ export default function Model() {
 
 
   useEffect(() => {
-    actions["Take 001"].play().paused = true;
+    const action = actions["Take 001"];
+    if(action) action.play().paused = true;
   }, []);
 
-  useFrame(() =>
-    (actions["Take 001"].time =
-      (actions["Take 001"].getClip().duration * scroll.offset) )
-  )
+  useFrame(() => {
+    const action = actions["Take 001"];
+
+    if(action) (action.time = (action.getClip().duration * scroll.offset))
+  })
 
 
   return <group  ref={group} >
