@@ -9,10 +9,10 @@ const Earth = dynamic(() => import('./components/earth/Earth.tsx'), { ssr: false
 
 function App() {
 
-  return   <Router>
+  return   <Router basename='/3D_Scroll_Animations'>
     <main className="h-[100vh] w-[100vw] bg-black">
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="" element={<Home/>} />
         <Route path="/robot-playground" element={<Scene />} />
         <Route path="/clock" element={<Clock />} />
         <Route path="/earth" element={<Earth />} />
